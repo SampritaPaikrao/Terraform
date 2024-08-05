@@ -1,0 +1,23 @@
+provider "aws" {
+    access_key = "Your_Access_Key"
+    secret_key = "Your_secret_key"
+    region = "Your_region"
+}
+
+resource "aws_instance" "example" {
+    ami = "Ami_id"
+    instance_type = "t2.micro"
+
+tags = {
+    Name = "instance_name"
+ }
+}
+
+variable "instance_count" {
+    type    = number
+    default = 1
+}
+
+output "Instance_id" {
+    value = aws_instance.example.id
+}
